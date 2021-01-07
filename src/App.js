@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from "./number"
 
 const num = 8;
 const logic = true;
@@ -14,14 +15,11 @@ function App() {
           <li className="App__item" style={{
             color: "violet"
           }}>
-            Добавления в разметку объекта style
-        </li>
-          <li className="App__item">вывод значения переменной: num = {num}</li>
-          <li className="App__item">вывод числа: {9}</li>
-          <li className="App__item">вывод результата арифметической операции: {365 - (30 * 3)}</li>
-          <li className="App__item">вывод результата логической операции: {logic && "Logical operation"}</li>
-          <li className="App__item">использование тернарного условия: {tern ? "\"tern\" is true" : "\"tern\" is false"}</li>
-          <li className="App__item">вывод undefined, null, false и true: {undefined} {null} {false} {true}</li>
+            Подключи переменные в файле src/App.js и выведи их произведение в разметку.
+          </li>
+          <li className="App__item">
+            count * length = {count * length}
+          </li>
         </ul>
       </header>
     </div>
