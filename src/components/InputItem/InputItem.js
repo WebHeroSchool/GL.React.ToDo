@@ -5,7 +5,7 @@ const InputItem = () => (
         <input
             id="todo-input"
             type="text"
-            placeholder="What needs to be done?">
+            placeholder="Что желаете сделать?">
         </input>
     </form>
 );
