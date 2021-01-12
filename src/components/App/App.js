@@ -2,7 +2,7 @@ import React from 'react';
 import InputItem from '../InputItem/InputItem'
 import ItemList from '../ItemList/ItemList'
 import Footer from '../Footer/Footer'
-import './App.css'
+import styles from "./App.module.css"
 
 const todoItems = [
   {
@@ -23,12 +23,12 @@ const todoItems = [
   }
 ];
 
-const App = () => (<div className="todo">
-  <h1 className="todo__title">todos</h1>
+const App = () => (<div className={styles.todo}>
+  <h1 className={styles.todo__title}>todos</h1>
   <InputItem />
   <ItemList items={todoItems} />
   <Footer count={todoItems.length} />
-</div>
+</div >
 );
 
 export default App;
