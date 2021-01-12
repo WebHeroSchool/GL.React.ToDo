@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@700&display=swap');
+.todo {
+    padding: 0;
+    margin: auto;
+    width: 30%;
+}
+
+.todo__title {
+    font-family: 'Signika', sans-serif;
+}
