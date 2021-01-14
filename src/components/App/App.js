@@ -7,19 +7,23 @@ import styles from "./App.module.css"
 const todoItems = [
   {
     id: 1,
-    value: 'Познать HTML/CSS'
+    value: 'Познать HTML/CSS',
+    isDone: true
   },
   {
     id: 2,
-    value: 'Понять JavaScript'
+    value: 'Понять JavaScript',
+    isDone: true
   },
   {
     id: 3,
-    value: 'Подружиться с React'
+    value: 'Подружиться с React',
+    isDone: false
   },
   {
     id: 4,
-    value: 'Стать веб-разработчиком'
+    value: 'Стать веб-разработчиком',
+    isDone: false
   }
 ];
 
