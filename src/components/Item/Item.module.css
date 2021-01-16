@@ -5,3 +5,11 @@
 .todo__item_done {
     text-decoration: line-through;
 }
+
+.item__delete {
+    color: #ffffff;
+}
+
+.item__delete:hover {
+    color: darkviolet;
+}
