@@ -44,15 +44,20 @@ const filterItems = [
     name: 'Выполненные',
     value: 'Completed'
   },
-]
+];
 
-const App = () => (<div className={styles.todo}>
-  <h1 className={styles.todo__title}>Список моих дел</h1>
-  <InputItem />
-  <FilterGroup filterItems={filterItems} />
-  <ItemList items={todoItems} />
-  <Footer count={todoItems.filter(item => item.isDone).length} />
-</div >
-);
+class App extends React.Component {
+  render() {
+    return (
+      <div className={styles.todo}>
+        <h1 className={styles.todo__title}>Список моих дел</h1>
+        <InputItem />
+        <FilterGroup filterItems={filterItems} />
+        <ItemList items={todoItems} />
+        <Footer count={todoItems.filter(item => item.isDone).length} />
+      </div >
+    );
+  };
+};
 
 export default App;
