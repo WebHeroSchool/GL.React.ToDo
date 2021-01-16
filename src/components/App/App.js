@@ -48,17 +48,23 @@ class App extends React.Component {
     ],
   };
 
+  onClickDone = (isDone) => (
+    console.log(isDone)
+  );
+
   render() {
     return (
       <div className={styles.todo}>
         <h1 className={styles.todo__title}>Список моих дел</h1>
         <InputItem />
         <FilterGroup filterItems={this.state.filterItems} />
-        <ItemList items={this.state.todoItems} />
+        <ItemList items={this.state.todoItems} onClickDone={this.onClickDone} />
         <Footer count={this.state.todoItems.filter(item => item.isDone).length} />
       </div >
     );
   };
+
+
 };
 
 export default App;

@@ -4,7 +4,7 @@ import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import styles from './Item.module.css';
 import classnames from 'classnames';
 
-export default function Item({ id, value, isDone }) {
+export default function Item({ id, value, isDone, onClickDone }) {
 
     return (
         <div className={styles.todo__item}>
@@ -13,6 +13,7 @@ export default function Item({ id, value, isDone }) {
                     <Checkbox
                         edge="start"
                         checked={isDone}
+                        onClick={() => onClickDone(isDone)}
                     />
                 </ListItemIcon>
                 <ListItemText className={
