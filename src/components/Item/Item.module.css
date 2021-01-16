@@ -1,7 +1,15 @@
 .todo__item {
-    color: #9400D3
+    color: #ffffff
 }
 
 .todo__item_done {
-    color: #32CD32
+    text-decoration: line-through;
+}
+
+.item__delete {
+    color: #ffffff;
+}
+
+.item__delete:hover {
+    color: darkviolet;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
+import List from '@material-ui/core/List'
 import Item from '../Item/Item'
 
-const ItemList = ({ items }) => (
-    <ul>
-        {items.map(item => (
-            <li key={item.id}>
-                <Item value={item.value} isDone={item.isDone} />
-            </li>))}
-    </ul>
-);
-
-export default ItemList;
+export default function ItemList({ items }) {
+    return (
+        <List dense>
+            {items.map(item => (
+                <Item key={item.id} value={item.value} isDone={item.isDone} />
+            ))};
+        </List>
+    );
+};

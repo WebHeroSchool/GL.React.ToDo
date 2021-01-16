@@ -28,7 +28,7 @@ const todoItems = [
 ];
 
 const App = () => (<div className={styles.todo}>
-  <h1 className={styles.todo__title}>todos</h1>
+  <h1 className={styles.todo__title}>Список моих дел</h1>
   <InputItem />
   <ItemList items={todoItems} />
   <Footer count={todoItems.length} />
