@@ -2,6 +2,7 @@ import React from 'react';
 import InputItem from '../InputItem/InputItem'
 import ItemList from '../ItemList/ItemList'
 import Footer from '../Footer/Footer'
+import FilterGroup from "../FilterGroup/FilterGroup"
 import styles from "./App.module.css"
 
 const todoItems = [
@@ -27,11 +28,30 @@ const todoItems = [
   }
 ];
 
+const filterItems = [
+  {
+    id: 1,
+    name: 'Все',
+    value: 'All'
+  },
+  {
+    id: 2,
+    name: 'Активные',
+    value: 'Active'
+  },
+  {
+    id: 3,
+    name: 'Выполненные',
+    value: 'Completed'
+  },
+]
+
 const App = () => (<div className={styles.todo}>
   <h1 className={styles.todo__title}>Список моих дел</h1>
   <InputItem />
+  <FilterGroup filterItems={filterItems} />
   <ItemList items={todoItems} />
-  <Footer count={todoItems.length} />
+  <Footer count={todoItems.filter(item => item.isDone).length} />
 </div >
 );
 
