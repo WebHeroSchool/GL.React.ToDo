@@ -46,6 +46,8 @@ class App extends React.Component {
         value: 'Completed'
       },
     ],
+    inputValue: '',
+    lastIdItem: 4
   };
 
   onClickDone = (id) => {
@@ -67,11 +69,26 @@ class App extends React.Component {
     this.setState({ todoItems: newTodoItems });
   };
 
+  onClickAddItem = (value) => {
+    this.setState((state) => ({
+      todoItems: [
+        ...state.todoItems,
+        {
+          id: state.lastIdItem + 1,
+          value: value,
+          isDone: false
+        }
+      ],
+      lastIdItem: state.lastIdItem + 1
+    }));
+  };
+
+
   render() {
     return (
       <div className={styles.todo}>
-        <h1 className={styles.todo__title}>Список моих дел</h1>
-        <InputItem />
+        <h1 className={styles.todo__title}>Список моих задач</h1>
+        <InputItem onClickAddItem={this.onClickAddItem} />
         <FilterGroup filterItems={this.state.filterItems} />
         <ItemList
           items={this.state.todoItems}
