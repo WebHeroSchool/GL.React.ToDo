@@ -31,3 +31,7 @@ export default function Item({ id, value, isDone, onClickDone, onClickDelete }) 
         </div>
     );
 };
+
+Item.defaultProps = {
+    isDone: true
+};

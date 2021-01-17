@@ -22,4 +22,8 @@ const Footer = ({ activeItemCount }) => (
     </div>
 );
 
+Footer.defaultProps = {
+    activeItemCount: 0
+};
+
 export default Footer;
