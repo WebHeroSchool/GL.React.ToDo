@@ -13,7 +13,7 @@ export default function Item({ id, value, isDone, onClickDone }) {
                     <Checkbox
                         edge="start"
                         checked={isDone}
-                        onClick={() => onClickDone(isDone)}
+                        onClick={() => onClickDone(id)}
                     />
                 </ListItemIcon>
                 <ListItemText className={

@@ -9,6 +9,10 @@
     color: white;
 }
 
+.footer__countActiveAllDone {
+    color: #4caf50;
+}
+
 .footer__clearCompleted {
     padding: 0;
     border: 1px solid #212121;
