@@ -62,13 +62,22 @@ class App extends React.Component {
     this.setState({ todoItems: newTodoItems });
   };
 
+  onClickDelete = (id) => {
+    const newTodoItems = this.state.todoItems.filter(item => item.id !== id)
+    this.setState({ todoItems: newTodoItems });
+  };
+
   render() {
     return (
       <div className={styles.todo}>
         <h1 className={styles.todo__title}>Список моих дел</h1>
         <InputItem />
         <FilterGroup filterItems={this.state.filterItems} />
-        <ItemList items={this.state.todoItems} onClickDone={this.onClickDone} />
+        <ItemList
+          items={this.state.todoItems}
+          onClickDone={this.onClickDone}
+          onClickDelete={this.onClickDelete}
+        />
         <Footer activeItemCount={this.state.todoItems.filter(item => !item.isDone).length} />
       </div >
     );
