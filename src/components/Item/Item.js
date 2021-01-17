@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemIcon, ListItemText, Checkbox, ListItemSecondaryAction, IconButton } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText, Checkbox, ListItemSecondaryAction } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import styles from './Item.module.css';
 import classnames from 'classnames';
@@ -7,7 +7,7 @@ import classnames from 'classnames';
 export default function Item({ id, value, isDone }) {
 
     return (
-        <div>
+        <div className={styles.todo__item}>
             <ListItem button>
                 <ListItemIcon>
                     <Checkbox
@@ -17,14 +17,14 @@ export default function Item({ id, value, isDone }) {
                 </ListItemIcon>
                 <ListItemText className={
                     classnames({
-                        [styles.todo__item]: true,
-                        [styles.todo__item_done]: isDone
+                        [styles.todo__itemText]: true,
+                        [styles.todo__itemText_done]: isDone
                     })
                 } id={id} primary={value} />
                 <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon className={styles.item__delete} />
-                    </IconButton>
+                    <span className={styles.item__deleteButton}>
+                        <DeleteIcon />
+                    </span>
                 </ListItemSecondaryAction>
             </ListItem>
         </div>

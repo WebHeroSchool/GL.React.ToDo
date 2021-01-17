@@ -10,20 +10,18 @@ const useStyles = makeStyles((theme) => ({
             bolorColor: 'white',
         },
         '& .MuiInput-underline:after': {
-            borderBottomColor: 'darkviolet',
+            borderBottomColor: 'white',
         },
     },
     todo__input_label: {
         color: '#fff',
         '&.Mui-focused': {
-            margin: theme.spacing(1),
-            color: 'darkviolet',
+            color: 'white',
         },
     },
     input: {
         color: '#fff',
-        paddingLeft: '1%',
-    }
+    },
 }));
 
 export default function InputItem() {
