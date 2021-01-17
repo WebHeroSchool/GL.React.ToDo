@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import styles from "./Footer.module.css";
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Footer = ({ activeItemCount }) => (
     <div className={styles.footer}>
@@ -21,6 +22,10 @@ const Footer = ({ activeItemCount }) => (
         </div>
     </div>
 );
+
+Footer.propTypes = {
+    activeItemCount: PropTypes.number
+};
 
 Footer.defaultProps = {
     activeItemCount: 0

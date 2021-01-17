@@ -3,6 +3,7 @@ import { ListItem, ListItemIcon, ListItemText, Checkbox, ListItemSecondaryAction
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import styles from './Item.module.css';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 export default function Item({ id, value, isDone, onClickDone, onClickDelete }) {
 
@@ -34,4 +35,12 @@ export default function Item({ id, value, isDone, onClickDone, onClickDelete }) 
 
 Item.defaultProps = {
     isDone: true
+};
+
+Item.propTypes = {
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+    onClickDone: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired,
 };

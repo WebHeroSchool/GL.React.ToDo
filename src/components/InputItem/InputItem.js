@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 const styles = (theme) => ({
     root: {
@@ -111,6 +112,11 @@ class InputItem extends React.Component {
             </form>
         );
     }
+};
+
+InputItem.propTypes = {
+    classes: PropTypes.object,
+    onClickAddItem: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(InputItem);

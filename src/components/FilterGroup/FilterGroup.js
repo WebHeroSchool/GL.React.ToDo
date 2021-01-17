@@ -1,6 +1,7 @@
 import React from 'react';
 import FilterItem from "../FilterItem/FilterItem"
 import styles from "./FilterGroup.module.css"
+import PropTypes from 'prop-types';
 
 export default function FilterGroup({ filterItems }) {
     return (<div className={styles.filterGroup} > {
@@ -9,7 +10,10 @@ export default function FilterGroup({ filterItems }) {
                 filterName={item.name}
                 filterValue={item.value}
             />
-        ))
-    } </div>
-    )
-}
+        ))} </div>
+    );
+};
+
+FilterGroup.propTypes = {
+    filterItems: PropTypes.array.isRequired,
+};
