@@ -4,11 +4,11 @@ import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import styles from './Item.module.css';
 import classnames from 'classnames';
 
-export default function Item({ id, value, isDone, onClickDone }) {
+export default function Item({ id, value, isDone, onClickDone, onClickDelete }) {
 
     return (
         <div className={styles.todo__item}>
-            <ListItem button>
+            <ListItem onClick={() => onClickDone(id)} button>
                 <ListItemIcon>
                     <Checkbox
                         edge="start"
@@ -24,7 +24,7 @@ export default function Item({ id, value, isDone, onClickDone }) {
                 } id={id} primary={value} />
                 <ListItemSecondaryAction>
                     <span className={styles.item__deleteButton}>
-                        <DeleteIcon />
+                        <DeleteIcon onClick={() => onClickDelete(id)} />
                     </span>
                 </ListItemSecondaryAction>
             </ListItem>
