@@ -48,9 +48,19 @@ class App extends React.Component {
     ],
   };
 
-  onClickDone = (isDone) => (
-    console.log(isDone)
-  );
+  onClickDone = (id) => {
+    const newTodoItems = this.state.todoItems.map(item => {
+      const newItem = { ...item };
+
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+
+      return newItem;
+    })
+
+    this.setState({ todoItems: newTodoItems });
+  };
 
   render() {
     return (
@@ -59,7 +69,7 @@ class App extends React.Component {
         <InputItem />
         <FilterGroup filterItems={this.state.filterItems} />
         <ItemList items={this.state.todoItems} onClickDone={this.onClickDone} />
-        <Footer count={this.state.todoItems.filter(item => item.isDone).length} />
+        <Footer activeItemCount={this.state.todoItems.filter(item => !item.isDone).length} />
       </div >
     );
   };
