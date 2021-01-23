@@ -32,7 +32,6 @@ body {
 
 .menu__link:hover {
     color: darkviolet;
-    background-color: black;
 }
 
 .link__text:hover {
