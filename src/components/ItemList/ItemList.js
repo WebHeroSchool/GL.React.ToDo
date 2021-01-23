@@ -15,7 +15,7 @@ export default function ItemList({ items, onClickDone, onClickDelete }) {
                     onClickDone={onClickDone}
                     onClickDelete={onClickDelete}
                 />
-            ))};
+            ))}
         </List>
     );
 };
