@@ -7,24 +7,11 @@ import PropTypes from 'prop-types';
 
 class Item extends React.Component {
     componentDidMount() {
-        console.log('Item: componentDidMount');
-    };
-
-    componentDidUpdate() {
-        console.log('Item: componentDidUpdate');
+        this.timerId = setInterval(() => (console.log('memory leak')), 1000);;
     };
 
     componentWillUnmount() {
-        console.log('Item: componentWillUnmount');
-    };
-
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        if (JSON.stringify(prevProps) !== JSON.stringify(this.props)) {
-            console.log(prevProps); // свойства до изменения
-            console.log(this.props); // свойства после
-        };
-
-        return null;
+        clearInterval(this.timerId);
     };
 
     render() {
