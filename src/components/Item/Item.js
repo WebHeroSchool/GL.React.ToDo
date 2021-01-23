@@ -5,32 +5,43 @@ import styles from './Item.module.css';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-export default function Item({ id, value, isDone, onClickDone, onClickDelete }) {
+class Item extends React.Component {
+    componentDidMount() {
+        this.timerId = setInterval(() => (console.log('memory leak')), 1000);;
+    };
 
-    return (
-        <div className={styles.todo__item}>
-            <ListItem onClick={() => onClickDone(id)} button>
-                <ListItemIcon>
-                    <Checkbox
-                        edge="start"
-                        checked={isDone}
-                        onClick={() => onClickDone(id)}
-                    />
-                </ListItemIcon>
-                <ListItemText className={
-                    classnames({
-                        [styles.todo__itemText]: true,
-                        [styles.todo__itemText_done]: isDone
-                    })
-                } id={id} primary={value} />
-                <ListItemSecondaryAction>
-                    <span className={styles.item__deleteButton}>
-                        <DeleteIcon onClick={() => onClickDelete(id)} />
-                    </span>
-                </ListItemSecondaryAction>
-            </ListItem>
-        </div>
-    );
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    };
+
+    render() {
+        const { id, value, isDone, onClickDone, onClickDelete } = this.props;
+
+        return (
+            <div className={styles.todo__item}>
+                <ListItem onClick={() => onClickDone(id)} button>
+                    <ListItemIcon>
+                        <Checkbox
+                            edge="start"
+                            checked={isDone}
+                            onClick={() => onClickDone(id)}
+                        />
+                    </ListItemIcon>
+                    <ListItemText className={
+                        classnames({
+                            [styles.todo__itemText]: true,
+                            [styles.todo__itemText_done]: isDone
+                        })
+                    } id={id} primary={value} />
+                    <ListItemSecondaryAction>
+                        <span className={styles.item__deleteButton}>
+                            <DeleteIcon onClick={() => onClickDelete(id)} />
+                        </span>
+                    </ListItemSecondaryAction>
+                </ListItem>
+            </div>
+        );
+    };
 };
 
 Item.defaultProps = {
@@ -44,3 +55,5 @@ Item.propTypes = {
     onClickDone: PropTypes.func.isRequired,
     onClickDelete: PropTypes.func.isRequired,
 };
+
+export default Item;
