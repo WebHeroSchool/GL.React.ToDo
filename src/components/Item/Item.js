@@ -6,14 +6,6 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 class Item extends React.Component {
-    componentDidMount() {
-        this.timerId = setInterval(() => (console.log('memory leak')), 1000);;
-    };
-
-    componentWillUnmount() {
-        clearInterval(this.timerId);
-    };
-
     render() {
         const { id, value, isDone, onClickDone, onClickDelete } = this.props;
 

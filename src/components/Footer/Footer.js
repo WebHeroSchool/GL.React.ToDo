@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const Footer = ({ activeItemCount }) => (
+const Footer = ({ activeItemCount, onClickClearCompleted }) => (
     <div className={styles.footer}>
         <span className={
             classnames({
@@ -16,7 +16,11 @@ const Footer = ({ activeItemCount }) => (
         </span>
 
         <div className={styles.footer__clearCompleted}>
-            <Button size="small" startIcon={<DeleteIcon />}>
+            <Button
+                size="small"
+                startIcon={<DeleteIcon />}
+                onClick={onClickClearCompleted}
+            >
                 Очистить завершенные
             </Button>
         </div>

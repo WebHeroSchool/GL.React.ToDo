@@ -1,12 +1,12 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import InputItem from '../InputItem/InputItem'
 import ItemList from '../ItemList/ItemList'
 import Footer from '../Footer/Footer'
 import FilterGroup from "../FilterGroup/FilterGroup"
 import styles from "./App.module.css"
 
-class App extends React.Component {
-  state = {
+function App() {
+  const state = {
     todoItems: [
       {
         id: 1,
@@ -46,12 +46,23 @@ class App extends React.Component {
         value: 'Completed'
       },
     ],
-    inputValue: '',
     lastIdItem: 4
   };
 
-  onClickDone = (id) => {
-    const newTodoItems = this.state.todoItems.map(item => {
+  const [items, setItems] = useState(state.todoItems);
+  const [filterItems] = useState(state.filterItems);
+  const [lastIdItem, setLastIdItem] = useState(state.lastIdItem);
+
+  useEffect(() => {
+    console.log('componentDidMount');
+  }, []);
+
+  useEffect(() => {
+    console.log('componentDidUpdate');
+  }, [items]);
+
+  const onClickDone = (id) => {
+    const newTodoItems = items.map(item => {
       const newItem = { ...item };
 
       if (item.id === id) {
@@ -61,44 +72,50 @@ class App extends React.Component {
       return newItem;
     })
 
-    this.setState({ todoItems: newTodoItems });
+    setItems(newTodoItems);
   };
 
-  onClickDelete = (id) => {
-    const newTodoItems = this.state.todoItems.filter(item => item.id !== id)
-    this.setState({ todoItems: newTodoItems });
+  const onClickDelete = (id) => {
+    const newTodoItems = items.filter(item => item.id !== id)
+    setItems(newTodoItems);
   };
 
-  onClickAddItem = (value) => {
-    this.setState((state) => ({
-      todoItems: [
-        ...state.todoItems,
-        {
-          id: state.lastIdItem + 1,
-          value: value,
-          isDone: false
-        }
-      ],
-      lastIdItem: state.lastIdItem + 1
-    }));
+  const onClickAddItem = (value) => {
+    setItems(() => ([
+      ...items,
+      {
+        id: lastIdItem + 1,
+        value: value,
+        isDone: false
+      }
+    ]
+    ));
+
+    setLastIdItem(lastIdItem + 1);
   };
 
-
-  render() {
-    return (
-      <div className={styles.todo}>
-        <h1 className={styles.todo__title}>Список моих задач</h1>
-        <InputItem onClickAddItem={this.onClickAddItem} />
-        <FilterGroup filterItems={this.state.filterItems} />
-        <ItemList
-          items={this.state.todoItems}
-          onClickDone={this.onClickDone}
-          onClickDelete={this.onClickDelete}
-        />
-        <Footer activeItemCount={this.state.todoItems.filter(item => !item.isDone).length} />
-      </div >
-    );
+  const onClickClearCompleted = () => {
+    if (items.find(item => { return item.isDone === true })) {
+      setItems(items.filter(item => item.isDone === false));
+    }
   };
+
+  return (
+    <div className={styles.todo}>
+      <h1 className={styles.todo__title}>Список моих задач</h1>
+      <InputItem onClickAddItem={onClickAddItem} />
+      <FilterGroup filterItems={filterItems} />
+      <ItemList
+        items={items}
+        onClickDone={onClickDone}
+        onClickDelete={onClickDelete}
+      />
+      <Footer
+        activeItemCount={items.filter(item => !item.isDone).length}
+        onClickClearCompleted={onClickClearCompleted}
+      />
+    </div>
+  );
 };
 
 export default App;
