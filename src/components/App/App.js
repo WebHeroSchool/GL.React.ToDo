@@ -32,8 +32,8 @@ function App() {
 
         <div className={styles.element}>
           <Route path='/' exact component={About} />
-          <Route path='/todo' exact component={Todo} />
-          <Route path='/contacts' exact component={Contacts} />
+          <Route path='/todo' component={Todo} />
+          <Route path='/contacts' component={Contacts} />
         </div>
       </div>
     </Router >
