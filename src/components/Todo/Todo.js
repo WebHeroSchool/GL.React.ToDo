@@ -53,13 +53,9 @@ function App() {
   const [filterItems] = useState(state.filterItems);
   const [lastIdItem, setLastIdItem] = useState(state.lastIdItem);
 
-  useEffect(() => {
-    console.log('componentDidMount');
-  }, []);
+  useEffect(() => { }, []);
 
-  useEffect(() => {
-    console.log('componentDidUpdate');
-  }, [items]);
+  useEffect(() => { }, [items]);
 
   const onClickDone = (id) => {
     const newTodoItems = items.map(item => {
