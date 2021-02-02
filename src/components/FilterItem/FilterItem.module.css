@@ -9,6 +9,10 @@
     outline-style: none;
 }
 
+.filterItem_isActive {
+    background-color: darkviolet;
+}
+
 .filterItem:hover {
     background-color: darkviolet;
 }

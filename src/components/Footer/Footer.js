@@ -12,7 +12,7 @@ const Footer = ({ activeItemCount, onClickClearCompleted }) => (
                 [styles.footer__countActive]: true,
                 [styles.footer__countActiveAllDone]: !activeItemCount
             })}>
-            {activeItemCount ? `Осталось выполнить: ${activeItemCount}` : 'Все дела выполнены!'}
+            {activeItemCount ? `Осталось выполнить: ${activeItemCount}` : 'Все задачи выполнены!'}
         </span>
 
         <div className={styles.footer__clearCompleted}>

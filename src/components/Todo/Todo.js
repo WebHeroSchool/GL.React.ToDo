@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer'
 import FilterGroup from "../FilterGroup/FilterGroup"
 import styles from "./Todo.module.css"
 
-function App() {
+const App = () => {
   const state = {
     todoItems: [
       {
@@ -21,36 +21,40 @@ function App() {
       {
         id: 3,
         value: 'Подружиться с React',
-        isDone: false
+        isDone: true
       },
       {
         id: 4,
         value: 'Стать веб-разработчиком',
-        isDone: false
+        isDone: true
       }
     ],
     filterItems: [
       {
         id: 1,
         name: 'Все',
-        value: 'All'
+        value: 'All',
+        isActive: true
       },
       {
         id: 2,
         name: 'Активные',
-        value: 'Active'
+        value: 'Active',
+        isActive: false
       },
       {
         id: 3,
         name: 'Выполненные',
-        value: 'Completed'
+        value: 'Completed',
+        isActive: false
       },
     ],
-    lastIdItem: 4
+    lastIdItem: 4,
+    sortItems: []
   };
 
   const [items, setItems] = useState(state.todoItems);
-  const [filterItems] = useState(state.filterItems);
+  const [filterItems, setFilterItems] = useState(state.filterItems);
   const [lastIdItem, setLastIdItem] = useState(state.lastIdItem);
 
   useEffect(() => { }, []);
@@ -96,13 +100,52 @@ function App() {
     }
   };
 
+  const onClickFilterChoose = (filterId) => {
+    const newFilterItems = filterItems.map(item => {
+      const newItem = { ...item };
+
+      if (newItem.id === filterId) {
+        newItem.isActive = true;
+      }
+      else {
+        newItem.isActive = false;
+      }
+
+      return newItem;
+    })
+
+    setFilterItems(newFilterItems);
+  };
+
+  let sortingTask;
+  function setFilter() {
+    let filterIndex = filterItems.findIndex(item => item.isActive === true)
+
+    switch (filterItems[filterIndex].value) {
+      case 'Active':
+        sortingTask = items.filter(item => item.isDone === false);
+        break;
+      case 'Completed':
+        sortingTask = items.filter(item => item.isDone === true);
+        break;
+      default:
+        sortingTask = items;
+        break;
+    }
+  }
+
+  setFilter();
+
   return (
     <div className={styles.todo}>
       <h1 className={styles.todo__title}>Список моих задач</h1>
       <InputItem onClickAddItem={onClickAddItem} />
-      <FilterGroup filterItems={filterItems} />
+      <FilterGroup
+        filterItems={filterItems}
+        onClickFilterChoose={onClickFilterChoose}
+      />
       <ItemList
-        items={items}
+        items={sortingTask}
         onClickDone={onClickDone}
         onClickDelete={onClickDelete}
       />
