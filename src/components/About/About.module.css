@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -44,8 +48,21 @@
     list-style: none;
 }
 
+.repoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.repoWrapper h2 {
+    align-self: flex-start;
+}
+
 .repoList {
-    padding: 0px 10px 0px 0px;
+    width: 98%;
+    border: 2px solid #212121;
+    border-radius: 10px;
+    padding: 10px 10px 0px 10px;
     list-style-type: none;
     height: 300px;
     overflow: hidden;
@@ -77,14 +94,14 @@
 .repoItemLink {
     color: #ffffff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .repoName {
     margin-right: 10px;
 }
 
-.repoDesc {
+.repoBio {
     font-style: italic;
 }
 
@@ -96,4 +113,90 @@
 .errorText {
     color: #da2d2d;
     text-align: center;
+}
+
+.pagination {
+    margin-bottom: 15px;
+}
+
+.repoDescription {
+    margin-bottom: 5px;
+}
+
+.repoInfo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.language {
+    position: relative;
+    min-width: 80px;
+    padding-left: 22px;
+    margin: 0 16px 0 0;
+}
+
+.html:before,
+.css:before,
+.js:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+}
+
+.html:before {
+    background: #e34c26;
+}
+
+.css:before {
+    background: #563d7c;
+}
+
+.js:before {
+    background: #ffdc5a;
+}
+
+.counts {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.star {
+    position: relative;
+    margin: 0 18px 0 0;
+    padding-left: 22px;
+    font-size: 12px;
+    color: #999999;
+}
+
+.star:before {
+    content: url("../../images/star.svg");
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    height: 15px;
+    width: 15px;
+}
+
+.fork {
+    position: relative;
+    padding-left: 22px;
+    margin: 0 15px 0 0;
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+}
+
+.fork:before {
+    content: url("../../images/fork.svg");
+    position: absolute;
+    left: 2px;
+    bottom: 5px;
+    height: 11px;
+    width: 15px;
 }

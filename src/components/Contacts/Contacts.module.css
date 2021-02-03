@@ -1,21 +1,35 @@
-.contacts {
+.social {
     text-decoration: none;
     color: white;
 }
 
-.contacts h1 {
+.social h1 {
     margin-top: 0;
 }
 
-.contactsList {
-    margin-bottom: 10px
+.socialList {
+    margin-bottom: 10px;
+    vertical-align: middle;
 }
 
-.contacts a {
+.social a {
     color: white;
     margin-right: 10px;
+    transition: 0.2s;
 }
 
-.contacts a:hover {
-    color: darkviolet
+.social a:hover {
+    color: darkviolet;
+    transform: translate(8px, 0px)
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.socialIcon {
+    font-size: 40px;
+    margin: 0px 10px 10px 0px;
 }
