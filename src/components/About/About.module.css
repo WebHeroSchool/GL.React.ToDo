@@ -30,7 +30,7 @@ body {
 .avatar {
     overflow: hidden;
     border-radius: 10%;
-    width: 30%;
+    width: 20%;
     margin-right: 10px;
     float: left;
 }
