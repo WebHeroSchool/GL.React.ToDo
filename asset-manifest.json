@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/GL.React.ToDo/static/css/main.4710d8d1.chunk.css",
-    "main.js": "/GL.React.ToDo/static/js/main.aef7f90b.chunk.js",
-    "main.js.map": "/GL.React.ToDo/static/js/main.aef7f90b.chunk.js.map",
+    "main.css": "/GL.React.ToDo/static/css/main.08023ffe.chunk.css",
+    "main.js": "/GL.React.ToDo/static/js/main.5c30e6ef.chunk.js",
+    "main.js.map": "/GL.React.ToDo/static/js/main.5c30e6ef.chunk.js.map",
     "runtime-main.js": "/GL.React.ToDo/static/js/runtime-main.d0192e6a.js",
     "runtime-main.js.map": "/GL.React.ToDo/static/js/runtime-main.d0192e6a.js.map",
     "static/js/2.c3a23c1a.chunk.js": "/GL.React.ToDo/static/js/2.c3a23c1a.chunk.js",
     "static/js/2.c3a23c1a.chunk.js.map": "/GL.React.ToDo/static/js/2.c3a23c1a.chunk.js.map",
     "index.html": "/GL.React.ToDo/index.html",
-    "static/css/main.4710d8d1.chunk.css.map": "/GL.React.ToDo/static/css/main.4710d8d1.chunk.css.map",
+    "static/css/main.08023ffe.chunk.css.map": "/GL.React.ToDo/static/css/main.08023ffe.chunk.css.map",
     "static/js/2.c3a23c1a.chunk.js.LICENSE.txt": "/GL.React.ToDo/static/js/2.c3a23c1a.chunk.js.LICENSE.txt",
     "static/media/About.module.css": "/GL.React.ToDo/static/media/star.d46cf2c1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.d0192e6a.js",
     "static/js/2.c3a23c1a.chunk.js",
-    "static/css/main.4710d8d1.chunk.css",
-    "static/js/main.aef7f90b.chunk.js"
+    "static/css/main.08023ffe.chunk.css",
+    "static/js/main.5c30e6ef.chunk.js"
   ]
 }
