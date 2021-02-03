@@ -1,14 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import Todo from '../Todo/Todo';
-import MenuItem from '@material-ui/core/MenuItem'
+import MenuItem from '@material-ui/core/MenuItem';
 import styles from "./App.module.css";
+import CreateIn from "../CreateIn/CreateIn";
 
 function App() {
   return (
-    <Router basename='/GL.React.ToDo'>
+    <Router basename="/GL.React.ToDo/">
       <div className={styles.wrap}>
         <div>
           <div className={styles.menu}>
@@ -19,7 +20,7 @@ function App() {
             </Link>
             <Link to='/todo' className={styles.menu__link}>
               <MenuItem className={styles.link__text}>
-                Мои дела
+                Мои задачи
               </MenuItem>
             </Link>
             <Link to='/contacts' className={styles.menu__link}>
@@ -28,6 +29,7 @@ function App() {
               </MenuItem>
             </Link>
           </div>
+          <CreateIn />
         </div>
 
         <div className={styles.element}>
