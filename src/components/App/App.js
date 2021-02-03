@@ -8,7 +8,7 @@ import styles from "./App.module.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename='/GL.React.ToDo'>
       <div className={styles.wrap}>
         <div>
           <div className={styles.menu}>
