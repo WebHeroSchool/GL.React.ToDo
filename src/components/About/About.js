@@ -10,7 +10,7 @@ const octokit = new Octokit();
 class About extends React.Component {
 
     state = {
-        username: '6thsence',
+        username: 'mrminax',
         isLoading: true,
         repoList: [],
         errorText: 'Возникла ошибка при получении данных',
