@@ -9,7 +9,7 @@ import CreateIn from "../CreateIn/CreateIn";
 
 function App() {
   return (
-    <Router basename="/GL.React.ToDo/">
+    <Router>
       <div className={styles.wrap}>
         <div>
           <div className={styles.menu}>
