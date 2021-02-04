@@ -7,28 +7,8 @@ import styles from "./Todo.module.css"
 
 const App = () => {
   const state = {
-    todoItems: [
-      {
-        id: 1,
-        value: 'Познать HTML/CSS',
-        isDone: true
-      },
-      {
-        id: 2,
-        value: 'Понять JavaScript',
-        isDone: true
-      },
-      {
-        id: 3,
-        value: 'Подружиться с React',
-        isDone: true
-      },
-      {
-        id: 4,
-        value: 'Стать веб-разработчиком',
-        isDone: true
-      }
-    ],
+    todoItems: window.localStorage.getItem('Todo.items') ? JSON.parse(window.localStorage.getItem('Todo.items')) : []
+    ,
     filterItems: [
       {
         id: 1,
@@ -49,7 +29,7 @@ const App = () => {
         isActive: false
       },
     ],
-    lastIdItem: 4,
+    lastIdItem: window.localStorage.getItem('Todo.lastIdItem') ? Number(window.localStorage.getItem('Todo.lastIdItem')) : 0,
     sortItems: []
   };
 
@@ -73,30 +53,37 @@ const App = () => {
     })
 
     setItems(newTodoItems);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
   };
 
   const onClickDelete = (id) => {
     const newTodoItems = items.filter(item => item.id !== id)
     setItems(newTodoItems);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
   };
 
   const onClickAddItem = (value) => {
-    setItems(() => ([
+    const newIdItem = lastIdItem + 1;
+    const newTodoItems = [
       ...items,
       {
-        id: lastIdItem + 1,
+        id: newIdItem,
         value: value,
         isDone: false
       }
-    ]
-    ));
+    ];
 
-    setLastIdItem(lastIdItem + 1);
+    setItems(newTodoItems);
+    setLastIdItem(newIdItem);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
+    window.localStorage.setItem('Todo.lastIdItem', newIdItem);
   };
 
   const onClickClearCompleted = () => {
     if (items.find(item => { return item.isDone === true })) {
-      setItems(items.filter(item => item.isDone === false));
+      const newTodoItems = items.filter(item => item.isDone === false)
+      setItems(newTodoItems);
+      window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
     }
   };
 
