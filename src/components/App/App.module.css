@@ -2,11 +2,19 @@ body {
     background-color: #212121;
 }
 
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 10px;
+    width: 60%;
+}
+
 .menu {
     background-color: #333333;
     border: 1px solid #333333;
     border-radius: 10px;
-    margin-right: 10px;
+    margin: 0px 10px 10px 0px;
 }
 
 .element {
@@ -16,13 +24,6 @@ body {
     color: #ffffff;
     padding: 10px 10px 0px 10px;
     width: 100%;
-}
-
-.wrap {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    width: 60%;
 }
 
 .menu__link {

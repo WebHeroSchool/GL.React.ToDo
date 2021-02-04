@@ -5,52 +5,36 @@ import Footer from '../Footer/Footer'
 import FilterGroup from "../FilterGroup/FilterGroup"
 import styles from "./Todo.module.css"
 
-function App() {
+const App = () => {
   const state = {
-    todoItems: [
-      {
-        id: 1,
-        value: 'Познать HTML/CSS',
-        isDone: true
-      },
-      {
-        id: 2,
-        value: 'Понять JavaScript',
-        isDone: true
-      },
-      {
-        id: 3,
-        value: 'Подружиться с React',
-        isDone: false
-      },
-      {
-        id: 4,
-        value: 'Стать веб-разработчиком',
-        isDone: false
-      }
-    ],
+    todoItems: window.localStorage.getItem('Todo.items') ? JSON.parse(window.localStorage.getItem('Todo.items')) : []
+    ,
     filterItems: [
       {
         id: 1,
         name: 'Все',
-        value: 'All'
+        value: 'All',
+        isActive: true
       },
       {
         id: 2,
         name: 'Активные',
-        value: 'Active'
+        value: 'Active',
+        isActive: false
       },
       {
         id: 3,
         name: 'Выполненные',
-        value: 'Completed'
+        value: 'Completed',
+        isActive: false
       },
     ],
-    lastIdItem: 4
+    lastIdItem: window.localStorage.getItem('Todo.lastIdItem') ? Number(window.localStorage.getItem('Todo.lastIdItem')) : 0,
+    sortItems: []
   };
 
   const [items, setItems] = useState(state.todoItems);
-  const [filterItems] = useState(state.filterItems);
+  const [filterItems, setFilterItems] = useState(state.filterItems);
   const [lastIdItem, setLastIdItem] = useState(state.lastIdItem);
 
   useEffect(() => { }, []);
@@ -69,40 +53,86 @@ function App() {
     })
 
     setItems(newTodoItems);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
   };
 
   const onClickDelete = (id) => {
     const newTodoItems = items.filter(item => item.id !== id)
     setItems(newTodoItems);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
   };
 
   const onClickAddItem = (value) => {
-    setItems(() => ([
+    const newIdItem = lastIdItem + 1;
+    const newTodoItems = [
       ...items,
       {
-        id: lastIdItem + 1,
+        id: newIdItem,
         value: value,
         isDone: false
       }
-    ]
-    ));
+    ];
 
-    setLastIdItem(lastIdItem + 1);
+    setItems(newTodoItems);
+    setLastIdItem(newIdItem);
+    window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
+    window.localStorage.setItem('Todo.lastIdItem', newIdItem);
   };
 
   const onClickClearCompleted = () => {
     if (items.find(item => { return item.isDone === true })) {
-      setItems(items.filter(item => item.isDone === false));
+      const newTodoItems = items.filter(item => item.isDone === false)
+      setItems(newTodoItems);
+      window.localStorage.setItem('Todo.items', JSON.stringify(newTodoItems));
     }
   };
+
+  const onClickFilterChoose = (filterId) => {
+    const newFilterItems = filterItems.map(item => {
+      const newItem = { ...item };
+
+      if (newItem.id === filterId) {
+        newItem.isActive = true;
+      }
+      else {
+        newItem.isActive = false;
+      }
+
+      return newItem;
+    })
+
+    setFilterItems(newFilterItems);
+  };
+
+  let sortingTask;
+  function setFilter() {
+    let filterIndex = filterItems.findIndex(item => item.isActive === true)
+
+    switch (filterItems[filterIndex].value) {
+      case 'Active':
+        sortingTask = items.filter(item => item.isDone === false);
+        break;
+      case 'Completed':
+        sortingTask = items.filter(item => item.isDone === true);
+        break;
+      default:
+        sortingTask = items;
+        break;
+    }
+  }
+
+  setFilter();
 
   return (
     <div className={styles.todo}>
       <h1 className={styles.todo__title}>Список моих задач</h1>
       <InputItem onClickAddItem={onClickAddItem} />
-      <FilterGroup filterItems={filterItems} />
+      <FilterGroup
+        filterItems={filterItems}
+        onClickFilterChoose={onClickFilterChoose}
+      />
       <ItemList
-        items={items}
+        items={sortingTask}
         onClickDone={onClickDone}
         onClickDelete={onClickDelete}
       />
